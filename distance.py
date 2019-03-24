@@ -17,8 +17,7 @@ def hello_name(name): # the name variable being passed in here is the string tha
 @app.route("/distance", methods=["POST"])
 def distance():
   r = request.get_json()
-  coordinates = {"a": [2, 4], "b": [5, 6]}
   dist = sum((r["a"] - r["b"])**(1/2))
-  distance = {"distance": dist, "a": [2, 4], "b": [5, 6]}
+  distance = {"distance": dist, "a": r["a"], "b": r["b"]}
 
   return jsonify(distance)
